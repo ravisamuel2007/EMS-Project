@@ -1,0 +1,25 @@
+<!--<template>
+    
+            <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+            <lightning-record-edit-form id={recordId} object-api-name="JobApplication">
+                <lightning-button type="submit" label="Update record"></lightning-button>
+            </lightning-record-edit-form>
+            </lightning-card>
+            <lightning-button label="Apply Now" title="Non-primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+
+
+</template>-->
+<template>
+    <template if:true={isPresent}>
+        <div class="slds-align_absolute-center">
+            <lightning-badge label="Already Applied to the Job" icon-name="standard:event"></lightning-badge>
+        </div>
+    </template>
+    <template if:false={isPresent}>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="success" label="Apply Now" title="Apply to this job"
+                icon-name="action:approval" class="slds-m-left_x-small" onclick={handleClick}></lightning-button>
+        </div>
+    </template>
+    
+</template>

@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+     <lightning:card title="Update Progress" >
+         <lightning:recordEditForm 
+        recordId="{!v.recordId}"
+        objectApiName="agf__ADM_Work__c">
+        <lightning:messages />
+            <div class="slds-grid">
+                    <lightning:inputField fieldName="QA_Completed__c"/>
+                </div>
+                    <lightning:inputField fieldName="Dev_Completed__c"/>
+        <lightning:button class="slds-m-top_small" type="Submit" label="Update" />
+    </lightning:recordEditForm>
+ </lightning:card>
+	
+</aura:component>

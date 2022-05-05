@@ -1,0 +1,87 @@
+<template>
+    <!--  <lightning-card title="Opportunity" object-api-name="Opportunity" icon-name="custom:custom20"> -->
+
+
+    <template if:true={customFormModal}>
+        <lightning-card>
+            <lightning-record-edit-form object-api-name='EMS_Resource_Request__c' onsuccess={handleSuccess}
+                onsubmit={handleSubmit}>
+
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={customHideModalPopup}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                    size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 class="slds-text-heading_medium slds-hyphenate">New Resource Request</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2 ">
+                                    <span>
+                                        <lightning-messages>
+                                        </lightning-messages>
+                                        <lightning-input-field label="Requirement Title"
+                                            field-name='EMS_Requirement_Title__c' required></lightning-input-field>
+                                        <lightning-input-field label="Project Name" field-name='EMS_Project_Id__c'>
+                                        </lightning-input-field>
+                                        <lightning-input-field label="Department" field-name='EMS_Industry__c'>
+                                        </lightning-input-field>
+                                        <lightning-input-field label="Domain" field-name='EMS_Domain_Technology__c'>
+                                        </lightning-input-field>
+
+                                      <lightning-input-field label="Job Role" field-name='EMS_Job_Role__c'
+                                            onchange={handleJobRole}></lightning-input-field>
+                                        <template if:true={displayOtherJobRole}>
+                                            <lightning-input-field label="Other Job Role"
+                                                field-name='EMS_Other_Job_Role__c'>
+                                            </lightning-input-field>
+                                        </template>
+                                        <lightning-input-field label="Key Skills" field-name='EMS_Key_Skills__c'
+                                            required="">
+                                        </lightning-input-field>
+                                        <lightning-input-field label="Required Qualification"
+                                            field-name='EMS_Required_Qualification__c' required="">
+                                        </lightning-input-field>
+                                    </span>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 ">
+                                    <span>
+                                        <lightning-input-field label="Vacant Position"
+                                            field-name='EMS_Vacant_Positions__c' required></lightning-input-field>
+                                        <lightning-input-field label="Manager" field-name='EMS_Manager__c'>
+                                        </lightning-input-field>
+                                        <lightning-input-field label="Resource Type" field-name='EMS_Resource_Type__c'
+                                            required=""></lightning-input-field>
+                                        <lightning-input-field label="Experience Required" field-name='EMS_Years__c'
+                                            required=""></lightning-input-field><br /><br /><br />
+                                        <lightning-input-field label="Job Location" field-name='EMS_Job_Location__c'
+                                            required=""></lightning-input-field>
+                                        <lightning-input-field label="Nice To Have Skills"
+                                            field-name='EMS_Nice_to_Have_Skills__c' onchange={handleNicetoHaveSkills} required=""></lightning-input-field>
+                                            <template if:true={displayOtherNiceToHaveSkills}>
+                                                <lightning-input-field label="Other Nice To Have Skills"
+                                                    field-name='EMS_Other_Nice_To_Have_Skills__c'>
+                                                </lightning-input-field>
+                                            </template>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_brand" onclick={customHideModalPopup}>Cancel</button>
+                            <button class="slds-button slds-button_brand" type="submit">Save</button>
+                        </footer>
+                    </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open">
+                </div>
+            </lightning-record-edit-form>
+        </lightning-card>
+    </template>
+</template>

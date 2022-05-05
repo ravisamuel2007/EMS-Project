@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Upload Resume">
+        <div class="slds-align_absolute-center">
+            <lightning-input type="file" 
+            accept=".doc, .docx, .pdf"
+            label="Upload Resume" onchange={openfileUpload}></lightning-input>
+        
+        <template if:true={fileData}>
+            
+            <p>{fileData.filename}</p>
+        
+        </template>
+        
+        <lightning-button variant="brand" label="submit" title="Submit" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<template>
+    
+    <template if:true={showLogin}>
+        <c-ems-applicant-login onregistration={handleApplicantEvent} ></c-ems-applicant-login>
+    </template>
+    <template if:true={showRegistration}>
+        <c-ems-applicant-registration onlogin={handleApplicantEvent} ></c-ems-applicant-registration>
+    </template>
+
+    <template if:true={showOtp}>
+        <c-ems-applicant-login onotp={handleApplicantEvent} ></c-ems-applicant-login>
+    </template>
+
+</template>

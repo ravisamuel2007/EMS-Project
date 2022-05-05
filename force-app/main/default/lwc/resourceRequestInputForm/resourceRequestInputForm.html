@@ -1,0 +1,133 @@
+<template>
+  <lightning-card title="New Resource Request" icon-name="standard:contact" variant="base">
+    <div slot="footer">
+      <lightning-button class="slds-theme_inverse slds-button_outline-brand" onclick={handleSave} variant="brand"
+        label="Submit"></lightning-button>
+    </div>
+    <div class="slds-card__body_inner">
+      <lightning-layout verticalalign="end">
+        <lightning-layout-item size="6" class="slds-p-left_x-large slds-p-right_x-large">
+          <lightning-input label="Requirement Title" name="reqTitle" required="required"
+            value={resData.EMS_Requirement_Title__c} onchange={handleRequirnemtChange} type="text" variant="standard">
+          </lightning-input>
+          <div>Project
+            <br />
+            <c-customlookup-project-id obj-name="EMS_Project__c" search-placeholder="Search Project"
+              icon-name="standard:account" onlookupselected={handleProjectSelection}> </c-customlookup-project-id>
+          </div>
+          <div>
+            <lightning-combobox name="Department" label="Department" placeholder="Select Department"
+              options={departmentOptions} onchange={handleDepartmentChange} value={selectedDepartmentValue}>
+            </lightning-combobox>
+          </div>
+          <div>
+            <lightning-combobox name="Domain" label="Domain" placeholder="Select Domain" options={domainOptions}
+              onchange={handleDomainChange} value={selectedDomainValue}></lightning-combobox>
+          </div>
+          <div>
+            <lightning-combobox name="JobRole" label="Job Role" placeholder="Select Job Role" options={jobRoleOptions}
+              onchange={handleJobRoleChange} value={selectedJobRoleValue}></lightning-combobox>
+          </div>
+          <template if:true={displayOtherJobRole}>
+            <lightning-input label="Other Job Role" name="other" value={resData.EMS_Other_Job_Role__c} onchange={handleOtherJobRole} type="text"
+              variant="standard"></lightning-input>
+          </template>
+
+
+          <div class="slds-p-around_small">
+            <lightning-dual-listbox name="jobLocationPicklist" required="required" label="Job Location"
+              source-label="Available" selected-label="Selected" 
+              value={resData.EMS_Job_Location__c} options={jobLocationOptions} onchange={handleChangeJobLocation}>
+            </lightning-dual-listbox>
+          </div>
+
+          <div class="slds-p-around_small">
+            <lightning-dual-listbox name="qualificationPicklist" required="required" label="Qualification"
+              source-label="Available" selected-label="Selected"
+              value={resData.EMS_Required_Qualification__c} options={qualificationOptions}
+              onchange={handleChangeQualification}></lightning-dual-listbox>
+          </div>
+          
+          <template if:true={displayJobDescription}>
+          <div>Job Description
+            <br />
+            <lightning-input-rich-text                  label="Job Description"></lightning-input-rich-text>
+          </div>
+        </template>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="6" class="slds-p-left_x-large slds-p-right_x-large">
+          <lightning-input label="Vacant Positions" name="vacPosition" required="required"
+            value={resData.EMS_Vacant_Positions__c} onchange={handleVacantPosition} type="number" variant="standard">
+          </lightning-input>
+
+          <div>Manager
+            <br />
+            <c-customlookup-manager-id obj-name="User" search-placeholder="Search Manager" icon-name="standard:account"
+              onlookupselected={handleManagerSelection}> </c-customlookup-manager-id>
+          </div>
+          <div>
+            <label class="slds-form-element__label">Resource Type</label>
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" onchange={selectOptionChanveValueResType} required="required">
+                  <option value="">---None---</option>
+                  <template for:each={selectTargetValuesResourceType.data} for:item="selectOptItem">
+                    <option key={selectOptItem.custFldvalue} value={selectOptItem.custFldvalue}>
+                      {selectOptItem.custFldlabel}
+                    </option>
+                  </template>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="slds-form-element__label">Experience</label>
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" onchange={selectOptionChanveValueExp} required="required">
+                  <option value="">---None---</option>
+                  <template for:each={selectTargetValuesExperience.data} for:item="selectOptItem">
+                    <option key={selectOptItem.custFldvalue} value={selectOptItem.custFldvalue}>
+                      {selectOptItem.custFldlabel}
+                    </option>
+                  </template>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <template if:true={displayOtherExperience}>
+            <lightning-input label="Other Experience" name="otherExperience" value={resData.EMS_Other_Experience__c} onchange={handleOtherExperience} type="text"
+              variant="standard"></lightning-input>
+          </template>
+
+          <br /><br /><br />
+          <div class="slds-p-around_small">
+            <lightning-dual-listbox name="keySkillsPicklist" label="Key Skills" required="required"
+              source-label="Available" selected-label="Selected" 
+              options={keySkillslstOptions} onchange={handleChangeKeySkills}></lightning-dual-listbox>
+          </div>
+
+          <div class="slds-p-around_small">
+            <lightning-dual-listbox name="niceToHaveSkillsPicklist" label="Nice to have Skills" required="required"
+              source-label="Available" selected-label="Selected" 
+              options={niceToHaveSkillslstOptions} onchange={handleChangeNiceToHaveSkills}></lightning-dual-listbox>
+          </div>
+
+          <template if:true={displayOtherNiceToHaveSkills}>
+            <lightning-input label="Other Nice to Have Skills" name="otherNiceToHaveSkills" value={resData.EMS_Other_Nice_To_Have_Skills__c} onchange={handleOtherNiceToHaveSkills} type="text"
+              variant="standard"></lightning-input>
+          </template>
+
+          <div>Roles and Responsibilities
+            <br />
+            <lightning-input-rich-text label="Roles and Responsibilities"></lightning-input-rich-text>
+          </div>
+
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+  </lightning-card>
+</template>

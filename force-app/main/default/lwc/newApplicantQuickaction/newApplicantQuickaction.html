@@ -1,0 +1,80 @@
+<template>
+    <lightning-card title=" Create Applicant">
+        <lightning-layout>
+            <lightning-layout-item>
+                <lightning-record-edit-form
+                object-api-name="EMS_Applicant__c"
+                onsuccess={handleSuccess}>
+           <!-- We can use this simple version like designing of indivisual input field -->
+           <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2 ">
+                <span>
+            <lightning-output-field label="Name" field-name='Name' required></lightning-output-field>
+            <lightning-input-field label="First Name" field-name='EMS_First_Name__c'>
+            </lightning-input-field>
+            <lightning-input-field label="Last Name" field-name='EMS_Last_Name__c'>
+            </lightning-input-field>
+            <lightning-input-field label="User Email" field-name='CheckUserMail__c'></lightning-input-field>
+            <lightning-input-field label="Skills" field-name='EMS_Skills__c'></lightning-input-field>
+        </span>
+        </div>
+        <div class="slds-col slds-size_1-of-2 ">
+            <span>
+        <lightning-input-field label="Owner" field-name='OwnerId' required></lightning-input-field>
+        <lightning-input-field label="Previous Company Name" field-name='EMS_Previous_Company_Name__c'>
+        </lightning-input-field>
+        <lightning-input-field label="Current Job Role" field-name='EMS_Technology__c'>
+        </lightning-input-field>
+        <lightning-input-field label="Phone Number" field-name='EMS_Phone_Number__c'></lightning-input-field>
+        <lightning-input-field label="Preferred Location" field-name='EMS_Preferred_Location__c'></lightning-input-field>
+    </span>
+    </div>
+        </div>
+        <lightning-accordion allow-multiple-sections-open class="example-accordion slds-grid slds-gutters"
+active-section-name= "{activeSections}">
+<lightning-accordion-section name='Edu_Fields' label='Education'> 
+<div class="slds-grid slds-gutters">
+<div class="slds-col slds-size_1-of-2">
+<span> 
+<lightning-input-field label="Education" field-name='EMS_Education__c'></lightning-input-field>
+<lightning-input-field label="College" field-name='EMS_College__c'></lightning-input-field>
+</span>
+</div>
+<div class="slds-col slds-size_1-of-2 ">
+<span>
+<lightning-input-field label="University" field-name='EMS_University__c'></lightning-input-field>
+</span>
+</div>
+</div>
+</lightning-accordion-section>
+<lightning-accordion-section name='Exp_Fields' label='Experience'> 
+<div class="slds-grid slds-gutters">
+<div class="slds-col slds-size_1-of-2 ">
+<span> 
+<lightning-input-field label="Experience(Years)" field-name='Experience_Years__c'>
+</lightning-input-field>
+<lightning-input-field label="Total Experience" field-name='EMS_Experience__c'></lightning-input-field>
+<lightning-output-field label="Created By" field-name='CreatedById'></lightning-output-field>
+</span>
+</div>
+<div class="slds-col slds-size_1-of-2 ">
+<span>
+<lightning-input-field label="Experience(Months)" field-name='Experience_Months__c'></lightning-input-field>
+<br> </br>
+<lightning-output-field label="Last Modified By" field-name='LastModifiedById'></lightning-output-field>
+</span>
+</div>
+</div>
+</lightning-accordion-section>
+</lightning-accordion>
+<footer class="slds-modal__footer">
+    <button class="slds-button slds-button_brand"
+        onclick={EditHideModalPopup}>Cancel</button>
+    <button class="slds-button slds-button_brand"
+        onclick={EditHidesaveModalPopup}>Save</button>
+</footer>
+                </lightning-record-edit-form>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

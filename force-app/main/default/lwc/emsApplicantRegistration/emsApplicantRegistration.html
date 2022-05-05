@@ -1,0 +1,43 @@
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows>
+
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input value={applicantInfo.Email__c} 
+                                message-when-pattern-mismatch = "Invalid email"
+                                onchange={handleValueChange} name="Email__c" required type="email" label="Email"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input value={applicantInfo.Password__c} min-length="8" max-length="16"
+                message-when-too-short="Password should have min 8 characters" 
+                message-when-too-long="Password should cannot exceed 16 characters"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
+                message-when-pattern-mismatch="Password show contains min 8 characters, 1 number,1 special character, 1 uppercase, 1 lowercase"
+                message-when-value-missing="Password Required"
+                  onchange={handleValueChange} name="Password__c" required type="password" label="Password"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input value={applicantInfo.confirmPassword} onchange={handleValueChange} name="confirmPassword" required type="password" label="Confirm Password"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-button variant="brand" label="Register" title="Register" onclick={handleRegisterClick} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-button variant="base" label="Already have an account?" title="Login" onclick={handleLoginClick} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

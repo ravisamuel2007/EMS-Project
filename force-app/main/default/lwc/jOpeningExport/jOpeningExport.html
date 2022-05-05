@@ -1,0 +1,81 @@
+<template>
+    <lightning-card title="Export Job Openings Data " icon-name="custom:custom63">
+        
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <p>Do you want download data , Click Here &nbsp;
+                   <!-- <lightning-button icon-name="utility:download" 
+                                      label="Download as CSV" 
+                                      title="Download CSV File"
+                                      onclick={downloadCSVFile} variant="brand"></lightning-button>-->
+                                      <lightning-button-menu alternative-text="Show menu" variant="border-filled" onselect={handleOnselect}>
+                                        <lightning-menu-item value="CSV" label="Download as CSV"></lightning-menu-item>
+                                        <lightning-menu-item value="Xlsx" label="Download as Xlsx"></lightning-menu-item>           
+                                    </lightning-button-menu>
+                </p>
+            </div>
+           
+            <lightning-layout>
+                <lightning-layout-item size="3" 
+                padding="around-small">
+
+            <lightning-input value={datecreation} type="date"  label="From Date" 
+            onchange={dateFunction} placeholder="Select Date"  required>
+        </lightning-input>
+    </lightning-layout-item>
+    <lightning-layout-item size="3" 
+                padding="around-small">
+        <lightning-input value={todatecreation} type="date"  label="To Date"
+            onchange={todateFunction} placeholder="Select Date" required >
+        </lightning-input> 
+
+         <template if:true={error}> 
+            <p style="color:red">{error}</p>
+         </template>
+        
+        
+        
+    </lightning-layout-item>
+    <lightning-layout-item size="3" 
+    padding="around-small">
+        <label>Status</label><lightning-combobox name="filter"
+                                value={selectedValue}
+                                variant="label-hidden"
+                                options={options}
+                                onchange={handleChange}
+                                placeholder="Select Status"></lightning-combobox>
+    </lightning-layout-item>
+
+    <lightning-layout-item size="2" 
+    padding="around-small">
+    <br>
+        <lightning-button 
+        label="Search" 
+        title="Search Records"
+        onclick={searchButton} variant="brand"></lightning-button>
+</br>
+    </lightning-layout-item>
+    <lightning-layout-item size="2" 
+    padding="around-small">
+    <br>
+        <lightning-button 
+        label="All" 
+        title="Reset Records"
+        onclick={getallapplicants}  variant="destructive"></lightning-button>
+</br>
+
+    </lightning-layout-item>
+    
+    </lightning-layout>
+    
+
+            <div class="slds-m-around_medium">
+                <!-- Datatable component -->
+                    <lightning-datatable columns={columns} 
+                                         data={data} 
+                                         hide-checkbox-column="true"
+                                         key-field="id"></lightning-datatable>
+            
+            </div>
+        
+    </lightning-card>
+</template>

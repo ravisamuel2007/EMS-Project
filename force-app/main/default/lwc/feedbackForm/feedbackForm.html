@@ -1,0 +1,253 @@
+<template>
+    
+    <template if:true={showSpinner}>
+        <div class="exampleHolder">
+            <lightning-spinner variant="brand" alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:true={showForm}>
+
+    
+        <template if:true={showAlert}>
+            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                <span class="slds-assistive-text">error</span>
+                <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                    title="Description of icon when needed">
+                    <lightning-icon icon-name="utility:error" alternative-text="Error!" title="Error">
+                    </lightning-icon>
+                </span>
+                <h2>{errorMessage}
+                </h2>
+                <div class="slds-notify__close">
+                    <button onclick={closeAlert}
+                        class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close">
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" title="CLose">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </div>
+            </div>
+        </template>
+    
+        <div data-id="registerBlock">
+        </br>
+            <h2 class="slds-page-header__title slds-truncate"> 
+                <div class="slds-text-heading_large">
+                    Feedback Form
+                </div> 
+             </h2> 
+        </br>
+            <div class="slds-form" role="list">
+
+                
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+                                <lightning-input type="text" label="Name" placeholder="Registered name"
+                                    data-element="Name" required="true">
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+                                <lightning-input type="text" label="Enter your registered Email" placeholder=""
+                                    data-element="Email" required="true">
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+                                <lightning-input type="tel" label="Phone" placeholder=""
+                                    data-element="Phone" required="true">
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+                                <lightning-input type="text" label="Job Role" placeholder="Designation and Dept."
+                                    data-element="Role" required="true">
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="select-01">
+                                    <abbr class="slds-required" title="required">* </abbr>How was your overall Event </br>
+                                     experience?</label>
+                                    <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                    <select class="slds-select" id="select-01" required data-element="Experience">
+                                        <option value="Not Satisfied">Not Satisfied</option>
+                                        <option value="Satisfied">Satisfied</option>
+                                           <option value="Good">Good</option>
+                                             <option value="Great">Great</option>
+                                               <option value="Tremendous">Tremendous</option>
+                                    </select>
+                                    </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+                                
+                                    <lightning-input type="text" label="What did you like the most?"
+                                        placeholder=""
+                                        data-element="Event_Favorite">
+                                    </lightning-input>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="select-03">
+                                    <abbr class="slds-required" title="required">* </abbr>Would you be interested in </br>
+                                    joining our next event? </label>
+                                    <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                    <select class="slds-select" id="select-03" required data-element="Future_Prospect">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                           
+                                    </select>
+                                    </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="select-04">
+                                    <abbr class="slds-required" title="required">* </abbr>Were you satisfied with the </br>
+                                      quality of goodies provided?</label>
+                                    <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                    <select class="slds-select" id="select-04" required data-element="Goodies">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>       
+                                    </select>
+                                    </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="select-02">
+                                    <abbr class="slds-required" title="required">* </abbr>Would you recommend</br> 
+                                       Cloud Peritus to a </br>
+                                      friend or colleague? </label>
+                                    <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                    <select class="slds-select" id="select-02" required data-element="Recommend">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                           <option value="3">3</option>
+                                             <option value="4">4</option>
+                                               <option value="5">5</option>
+                                    </select>
+                                    </div>
+                                    </div>
+                                    
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div class="slds-form-element">
+    
+                            <div class="slds-form-element__control">
+                                <lightning-input type="text" label="Additional remark" placeholder="Any suggestions/feedback?"
+                                    data-element="remark">
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slds-p-right_xx-large">
+                <lightning-button variant="brand" label="Submit Feedback" title="Submit" onclick={feedbackHandler}>
+                </lightning-button> 
+            </div>
+        </br>
+        </div>
+    </template>
+    <template if:true={ShowSuccess}>
+        <div class="body">
+        <div class="card">
+            <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+              <i class="checkmark">✓</i>
+            </div>
+              <h1>Your Feedback was successfully submitted</h1> 
+              <p>Kindly do visit us again<br/> we'll meet you soon.</p>
+            </div>
+        </div>
+    </template>
+
+</template>

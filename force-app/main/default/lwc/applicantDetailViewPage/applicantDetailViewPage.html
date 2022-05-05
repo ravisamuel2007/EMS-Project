@@ -1,0 +1,66 @@
+<template>
+     <lightning-card  title="">
+        <lightning-record-view-form
+                    record-id={recordId}
+                    object-api-name="EMS_Applicant__c">
+        <div class="slds-grid slds-gutters" >
+        <div class="slds-col slds-size_1-of-2 ">
+           <span>
+               <lightning-output-field field-name="Name"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_First_Name__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Last_Name__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="CheckUserMail__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Skills__c"><hr style="margin-top:2px"></lightning-output-field>
+            </span>
+        </div>
+        <div class="slds-col slds-size_1-of-2 ">
+            <span>
+                <lightning-output-field field-name="OwnerId"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Previous_Company_Name__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Technology__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Phone_Number__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Preferred_Location__c"><hr style="margin-top:2px"></lightning-output-field>
+            </span>          
+        </div>
+        </div>
+
+    <lightning-accordion allow-multiple-sections-open class="example-accordion slds-grid slds-gutters"
+            active-section-name= "{activeSections}">
+      <lightning-accordion-section name='Edu_Fields' label='Education'> 
+        <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2">
+         <span> 
+           <lightning-output-field field-name="EMS_Education__c"><hr style="margin-top:2px"></lightning-output-field>
+           <lightning-output-field field-name="EMS_College__c"><hr style="margin-top:2px"></lightning-output-field>
+         </span>
+       </div>
+       <div class="slds-col slds-size_1-of-2 ">
+         <span>
+          <lightning-output-field field-name="EMS_University__c"><hr style="margin-top:2px"></lightning-output-field>
+        </span>
+      </div>
+      </div>
+      </lightning-accordion-section>
+      <lightning-accordion-section name='Exp_Fields' label='Experience'> 
+        <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2 ">
+         <span> 
+           <lightning-output-field field-name="Experience_Years__c"><hr style="margin-top:2px"></lightning-output-field>
+           <lightning-output-field field-name="EMS_Experience__c"><hr style="margin-top:2px"></lightning-output-field>
+           <lightning-output-field field-name="CreatedById"><hr style="margin-top:2px"></lightning-output-field>
+         </span>
+        </div>
+        <div class="slds-col slds-size_1-of-2 ">
+         <span>
+          <lightning-output-field field-name="Experience_Months__c"><hr style="margin-top:2px"></lightning-output-field>
+          <br> </br>
+          <lightning-output-field field-name="LastModifiedById"><hr style="margin-top:2px"></lightning-output-field>
+         </span>
+        </div>
+        </div>
+       </lightning-accordion-section>
+    </lightning-accordion>
+        </lightning-record-view-form>
+    </lightning-card>
+
+</template>

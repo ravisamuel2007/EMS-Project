@@ -1,0 +1,64 @@
+<template>
+    <lightning-card  title="">
+
+        <lightning-record-view-form
+                    record-id={recordId}
+                    object-api-name="EMS_Job_Opening__c">
+        <div class="slds-grid slds-gutters" >
+        <div class="slds-col slds-size_1-of-2 ">
+           <span>
+               <lightning-output-field field-name="Name"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Posting_Title__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Hiring_Manager__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Industry__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Domain_Technology__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Job_Role__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Nice_to_Have_Skills__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Key_Skills__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Job_Description__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Company_Information__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Approved_By__c"><hr style="margin-top:2px"></lightning-output-field>
+                
+            </span>
+        </div>
+        <div class="slds-col slds-size_1-of-2 ">
+           <span>
+                <lightning-output-field field-name="OwnerId"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Project_Name__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Project__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Vacant_Positions__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Resource_Type__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_CTC_Offered__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Posted_Date__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Target_Date__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Status__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Job_Location__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Required_Qualification__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="EMS_Roles_and_Responsibilities__c"><hr style="margin-top:2px"></lightning-output-field>
+                <lightning-output-field field-name="Foreign_Key__c"><hr style="margin-top:2px"></lightning-output-field>
+            </span>
+         </div>
+         </div>
+       <lightning-accordion allow-multiple-sections-open class="example-accordion slds-grid slds-gutters"
+            active-section-name= "{activeSections}">
+       <lightning-accordion-section name='Fields' label='Experience'> 
+        <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2 ">
+         <span> 
+           <lightning-output-field field-name="EMS_Years__c"><hr style="margin-top:2px"></lightning-output-field>
+           <lightning-output-field field-name="CreatedById"><hr style="margin-top:2px"></lightning-output-field>
+         </span>
+       </div>
+       <div class="slds-col slds-size_1-of-2 ">
+         <span>
+          <lightning-output-field field-name="EMS_Months__c"><hr style="margin-top:2px"></lightning-output-field>
+          <lightning-output-field field-name="LastModifiedById"><hr style="margin-top:2px"></lightning-output-field>
+        </span>
+      </div>
+      </div>
+        </lightning-accordion-section>
+        </lightning-accordion>
+        </lightning-record-view-form>
+     </lightning-card>
+
+</template>

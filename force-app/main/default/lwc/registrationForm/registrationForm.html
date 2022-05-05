@@ -1,0 +1,126 @@
+<template>
+    <template if:true={showSpinner}>
+
+    <div class="exampleHolder">
+        <lightning-spinner variant="brand" alternative-text="Loading" size="large"></lightning-spinner>
+    </div>
+</template>
+    <template if:true={showForm}>
+
+    
+    <template if:true={showAlert}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                title="Description of icon when needed">
+                <lightning-icon icon-name="utility:error" alternative-text="Error!" title="Error">
+                </lightning-icon>
+            </span>
+            <h2>{errorMessage}
+            </h2>
+            <div class="slds-notify__close">
+                <button onclick={closeAlert}
+                    class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close">
+                    <lightning-icon icon-name="utility:close" alternative-text="Close" title="CLose">
+                    </lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <div data-id="registerBlock">
+        <h2 class="slds-p-around_large"> Registration Form</h2>
+        
+        <div class="slds-form" role="list">
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <lightning-input type="text" label="First Name" placeholder="Enter First Name"
+                                data-element="firstName" required>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element">
+
+                        <div class="slds-form-element__control">
+                            <lightning-input type="text" label="Last Name" placeholder="Enter Last Name"
+                                data-element="lastName" required>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element">
+
+                        <div class="slds-form-element__control">
+                            <lightning-input type="email" name="email" placeholder="Enter Email" label="Email Address"
+                                data-element="email" required>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element">
+
+                        <div class="slds-form-element__control">
+                            <lightning-input type="tel" label="Phone Number" name="phoneNumber" data-element="phone" placeholder="Enter Phone Number" required></lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element">
+
+                        <div class="slds-form-element__control">
+                            <lightning-input type="text" label="Company Name" placeholder="Enter Company Name"
+                                data-element="company">
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element">
+
+                        <div class="slds-form-element__control">
+                            <lightning-input type="text" label="LinkedIn URL" placeholder="Enter Linked In URL..."
+                                data-element="linkedIn">
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-p-left_xx-large">
+            <lightning-button variant="brand" label="Register" title="Register" onclick={registrationHandler}
+            >
+            </lightning-button>
+            </div>
+        </div>
+    </div>
+</template>
+<template if:true={ShowSuccess}>
+    <div class="body">
+    <div class="card">
+        <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+          <i class="checkmark">✓</i>
+        </div>
+          <h1>Registration Success</h1> 
+          <p>Please Check your email for QR code<br/> we'll meet you in the event.</p>
+        </div>
+    </div>
+</template>
+
+
+</template>

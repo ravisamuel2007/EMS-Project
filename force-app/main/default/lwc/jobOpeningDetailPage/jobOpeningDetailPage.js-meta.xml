@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>51.0</apiVersion>
+	<isExposed>false</isExposed>
+	<description>Job Opening Detail Page</description>
+	<targets>
+		<target>lightning__RecordPage</target>
+	</targets>
+</LightningComponentBundle>
