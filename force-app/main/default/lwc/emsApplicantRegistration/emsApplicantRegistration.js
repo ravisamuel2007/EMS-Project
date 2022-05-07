@@ -20,7 +20,7 @@ export default class EmsApplicantRegistration extends NavigationMixin(LightningE
         saveNewApplicant({applicant : ts.applicantInfo})
         .then(() => {
             ts.showNotification('Success', 'Registration Sucess', 'success', 'dismissible');
-            //redirct to otp screen
+            ts.dispatchCustomEvenint('otp', {type:'otp', applicantEmail : ts.applicantInfo.Email__c});
         })
         .catch(error => {
             console.log(error);
@@ -29,12 +29,17 @@ export default class EmsApplicantRegistration extends NavigationMixin(LightningE
 
     handleLoginClick(){
         let ts = this;
-       // ts.navigateToPage('comm__namedPage', 'ems_login__c');
-       ts.dispatchEvent(new CustomEvent('login', { detail: 'login' }));
+        ts.dispatchCustomEvenint('login', {type : 'login'});
+       
     }
 
     validateApplicantInfo(){
 
+    }
+
+    dispatchCustomEvenint(eventName, detail){
+        let ts = this;
+        ts.dispatchEvent(new CustomEvent(eventName, { detail: detail }));
     }
 
     navigateToPage(type, name) {

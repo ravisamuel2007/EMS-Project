@@ -4,12 +4,12 @@ export default class EmsApplicant extends LightningElement {
     showLogin = true;
     showRegistration = false;
     showOtp = false;
-
+    applicantEmail;
     handleApplicantEvent(event){
         let ts = this;
         let detail = event.detail;
         console.log(detail);
-        switch (detail) {
+        switch (detail.type) {
             case 'registration':
                 ts.displayForms(false,true,false);
                 break;
@@ -17,6 +17,7 @@ export default class EmsApplicant extends LightningElement {
                 ts.displayForms(true,false,false);
                 break;
             case 'otp':
+                ts.applicantEmail = detail.applicantEmail;
                 ts.displayForms(false,false,true);
             default:
                 break;

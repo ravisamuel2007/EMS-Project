@@ -33,14 +33,18 @@ export default class EmsApplicantLogin extends NavigationMixin(LightningElement)
     }
 
     handleRegisterClick(){
-
-        try{
         let ts = this;
-        ts.dispatchEvent(new CustomEvent('registration', { detail: 'registration' }));
-        }
-        catch(e){
-            console.log(e)
-        }
+        
+        ts.dispatchCustomEvenint('registration', {type : 'registration'});
+    }
+
+    dispatchCustomEvenint(eventName, detail){
+        let ts = this;
+        ts.dispatchEvent(new CustomEvent(eventName, { detail: detail }));
+    }
+
+    validateApplicantInfo(){
+        
     }
 
     navigateToPage(type, name) {

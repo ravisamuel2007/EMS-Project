@@ -1,7 +1,11 @@
 <template>
     
     <lightning-card>
+        <div class="slds-clearfix">
+                <lightning-button variant="brand" label="Login" title="Login" onclick={handleLoginClick} class="slds-align_absolute-center"></lightning-button>
+            </div>
         <lightning-layout multiple-rows>
+            
             <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
             <lightning-layout-item size="6" padding="around-small">
                 <lightning-input value={applicantInfo.email} 
@@ -29,7 +33,7 @@
             
             <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
             <lightning-layout-item size="6" padding="around-small">
-                <lightning-button variant="brand" label="Login" title="Login" onclick={handleLoginClick} class="slds-m-left_x-small"></lightning-button>
+             <!--   <lightning-button variant="brand" label="Login" title="Login" onclick={handleLoginClick} class="slds-m-left_x-small"></lightning-button>-->
             </lightning-layout-item>
             <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
             <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>

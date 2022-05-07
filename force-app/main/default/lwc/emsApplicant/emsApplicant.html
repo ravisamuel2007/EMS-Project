@@ -4,11 +4,11 @@
         <c-ems-applicant-login onregistration={handleApplicantEvent} ></c-ems-applicant-login>
     </template>
     <template if:true={showRegistration}>
-        <c-ems-applicant-registration onlogin={handleApplicantEvent} ></c-ems-applicant-registration>
+        <c-ems-applicant-registration onotp={handleApplicantEvent} onlogin={handleApplicantEvent} ></c-ems-applicant-registration>
     </template>
 
     <template if:true={showOtp}>
-        <c-ems-applicant-login onotp={handleApplicantEvent} ></c-ems-applicant-login>
+        <c-ems-applicant-otp applicant-email={applicantEmail} ></c-ems-applicant-otp>
     </template>
 
 </template>

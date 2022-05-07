@@ -1,4 +1,4 @@
-public with sharing class EMS_ApplicantRegistrationController {
+public without sharing class EMS_ApplicantRegistrationController {
 
     private static final String CRYPTO_KEY = '1234509876123409';
     private static final String AES128 = 'AES128';
@@ -17,9 +17,48 @@ public with sharing class EMS_ApplicantRegistrationController {
         return decryptedPassword == loginCredentials.get('password');
     }
 
+    @AuraEnabled
+    public static Boolean verifyOTP(Integer otp, String email){
+        try {
+            
+            EMS_Applicant_Credentials__c applicant = [SELECT Id, One_Time_Passcode__c,OTP_Generated_Date_Time__c FROM EMS_Applicant_Credentials__c WHERE Email__c =: email LIMIT 1];
+            Long optGeneratedMinutes = (DateTime.now().getTime() - applicant.OTP_Generated_Date_Time__c.getTime())/60000;
+            Boolean verified = false;
+            if(applicant.One_Time_Passcode__c == otp && optGeneratedMinutes <= 30){
+                applicant.Is_OTP_Verified__c = true;
+                applicant.Send_OTP__c = false;
+                verified = true;
+            }
+            else{
+                applicant.Is_OTP_Verified__c = false;
+                applicant.Send_OTP__c = false;
+                verified = false;
+            }
+            update applicant;
+            return verified;
+            
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    public static void resentOTP(Integer otp, String email){
+        try{
+            EMS_Applicant_Credentials__c applicant = [SELECT Id FROM EMS_Applicant_Credentials__c WHERE Email__c =: email LIMIT 1];
+            applicant.One_Time_Passcode__c = generateRandomOtp();
+            applicant.Is_OTP_Verified__c = false;
+            applicant.Send_OTP__c = true;
+            applicant.OTP_Generated_Date_Time__c = System.now();
+            update applicant;
+        }
+        catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
 
     private static Integer generateRandomOtp(){
-        return Integer.valueof((Math.random() * 999999));
+        return Math.round((Math.random() * (900000) + 100000));
     }
 
     private static String encryptPassword(String password){

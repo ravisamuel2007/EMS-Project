@@ -1,0 +1,26 @@
+<template>
+    
+    <lightning-card>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+                <lightning-input value={opt} pattern="[0-9]+$" min-length="6" max-length="6"
+                                message-when-pattern-mismatch="Invalid OTP"
+                                onchange={handleValueChange} name="otp" required type="text" label="OTP">
+
+                </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="5" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-button variant="brand" label="Verify" title="Verify" onclick={handleVerifyClick} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-button variant="base" label="Rend OTP?" title="resend" onclick={handleResendClick} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+    </lightning-card>
+</template>
