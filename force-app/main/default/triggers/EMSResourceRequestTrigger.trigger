@@ -2,7 +2,8 @@ trigger EMSResourceRequestTrigger on EMS_Resource_Request__c (after update,befor
     if(trigger.isUpdate){
         if(trigger.isAfter){
             ResourceRequestTriggerHandler.createJobOpening(trigger.new);
-            
+            ResourceRequestTriggerHandler.updateJobDescriptionBeforeUpdate(trigger.new);
+            ResourceRequestTriggerHandler.updateJobDescriptionBeforeInsert(trigger.new);
         }
     }
     

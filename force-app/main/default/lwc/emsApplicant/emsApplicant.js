@@ -8,7 +8,6 @@ export default class EmsApplicant extends LightningElement {
     handleApplicantEvent(event){
         let ts = this;
         let detail = event.detail;
-        console.log(detail);
         switch (detail.type) {
             case 'registration':
                 ts.displayForms(false,true,false);

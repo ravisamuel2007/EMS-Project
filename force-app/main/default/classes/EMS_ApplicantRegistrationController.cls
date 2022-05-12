@@ -2,6 +2,9 @@ public without sharing class EMS_ApplicantRegistrationController {
 
     private static final String CRYPTO_KEY = '1234509876123409';
     private static final String AES128 = 'AES128';
+    private static final String HOME = 'home';
+    private static final String VERIFY_OTP = 'verify_otp';
+    private static final String AUTHENTICATION_FAILED = 'authentication_failed';
     
     @AuraEnabled
     public static void saveNewApplicant(EMS_Applicant_Credentials__c applicant){
@@ -11,10 +14,22 @@ public without sharing class EMS_ApplicantRegistrationController {
     }
 
     @AuraEnabled
-    public static Boolean loginApplicant(Map<String,String> loginCredentials){
-        EMS_Applicant_Credentials__c applicant = [SELECT Id, Email__c,Password__c FROM EMS_Applicant_Credentials__c WHERE Email__c =: loginCredentials.get('email') LIMIT 1];
-        String decryptedPassword = decryptPassword(applicant.Password__c);
-        return decryptedPassword == loginCredentials.get('password');
+    public static String loginApplicant(Map<String,String> loginCredentials){
+        try{
+            EMS_Applicant_Credentials__c applicant = [SELECT Id, Email__c,Password__c,Is_OTP_Verified__c FROM EMS_Applicant_Credentials__c WHERE Email__c =: loginCredentials.get('email') LIMIT 1];
+            String decryptedPassword = decryptPassword(applicant.Password__c);
+            String result = '';
+            if(decryptedPassword == loginCredentials.get('password')){
+                result =  applicant.Is_OTP_Verified__c ? HOME : VERIFY_OTP;
+            }
+            else{
+                result = AUTHENTICATION_FAILED;
+            }
+            return result;
+        }
+        catch(Exception e){
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 
     @AuraEnabled

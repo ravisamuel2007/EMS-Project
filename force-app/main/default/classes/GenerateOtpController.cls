@@ -24,6 +24,3 @@ public with sharing class GenerateOtpController {
     return false;
     }
     }
-
-   
-    

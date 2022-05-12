@@ -21,10 +21,9 @@ public class ResourceRequestTriggerHandler {
                 JO.Foreign_Key__c = ERR.EMS_Foreign_Key__c;
                 Jo.EMS_Project__c = ERR.EMS_Project_Id__c;
                 Jo.EMS_Resource_Type__c = ERR.EMS_Resource_Type__c;
-                Jo.EMS_Status__c = 'Open';
+                Jo.EMS_Status__c = 'Approved';
                 JobOpeningList.add(JO);
-            }
-                
+            }               
         }
         if(JobOpeningList.size()>0)
          insert JobOpeningList;
