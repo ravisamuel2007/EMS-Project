@@ -1,7 +1,7 @@
 <template>
     
     <template if:true={showLogin}>
-        <c-ems-applicant-login onregistration={handleApplicantEvent} ></c-ems-applicant-login>
+        <c-ems-applicant-login onotp={handleApplicantEvent} onregistration={handleApplicantEvent} ></c-ems-applicant-login>
     </template>
     <template if:true={showRegistration}>
         <c-ems-applicant-registration onotp={handleApplicantEvent} onlogin={handleApplicantEvent} ></c-ems-applicant-registration>

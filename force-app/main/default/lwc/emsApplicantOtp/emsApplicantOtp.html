@@ -9,6 +9,7 @@
                                 onchange={handleValueChange} name="otp" required type="text" label="OTP">
 
                 </lightning-input>
+                <p>Invalid Atempts: {invalidOTPAttempts}</p>
             </lightning-layout-item>
             <lightning-layout-item size="5" padding="around-small"></lightning-layout-item>
             <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
@@ -18,7 +19,7 @@
             <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
             <lightning-layout-item size="3" padding="around-small"></lightning-layout-item>
             <lightning-layout-item size="6" padding="around-small">
-                <lightning-button variant="base" label="Resend OTP?" title="resend" onclick={handleResendClick} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button disabled={disableResend} variant="base" label="Resend OTP?" title="resend" onclick={handleResendClick} class="slds-m-left_x-small"></lightning-button> in {counter}
             </lightning-layout-item>
         </lightning-layout>
         

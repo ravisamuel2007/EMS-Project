@@ -54,7 +54,7 @@
                         </header>
                         <!-- Modal/Popup Box LWC body starts here -->
                         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                            <lightning-input label="Email" type="email" pattern="[A-Za-z0-9._-]+@[a-z0-9-]+.[a-z]{2,}$" message-when-pattern-mismatch="Please enter a valid email" required>
+                            <lightning-input label="Email" type="email" value={forgotemail} onchange={handleemailinput} pattern="[A-Za-z0-9._-]+@[a-z0-9-]+.[a-z]{2,}$" message-when-pattern-mismatch="Please enter a valid email" required>
                             </lightning-input>
                         </div>
                         <!-- Modal/Popup Box LWC footer starts here -->

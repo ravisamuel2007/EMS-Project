@@ -1,8 +1,9 @@
-import { LightningElement,track } from 'lwc';
+import { LightningElement,track,api, wire } from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import {NavigationMixin} from "lightning/navigation";
 import utilities from 'c/emsUtilities';
 import loginApplicant from '@salesforce/apex/EMS_ApplicantRegistrationController.loginApplicant';
+import ApplicantCredentials from '@salesforce/apex/forgotPasswordcntrl.ApplicantCredentials';
 export default class EmsApplicantLogin extends NavigationMixin(LightningElement) {
 
     applicantInfo = {}
@@ -89,5 +90,27 @@ export default class EmsApplicantLogin extends NavigationMixin(LightningElement)
     submitDetails() {
         this.isModalOpen = false;
     }
+//forgotpassword 
+
+forgotemail;
+handleemailinput(event){
+this.forgotemail=event.target.value;
+}
+submitDetails(){
+
+
+ApplicantCredentials({ mail: this.forgotemail})
+            .then(result => {
+                console.log(JSON.stringify(result));
+                let ts = this;
+                ts.showNotification(utilities.NOTIFICATION_HEADERS.SUCCESS, utilities.NOTIFICATIONS.EMAIL_SENT, utilities.NOTIFICATION_TYPES.SUCCESS, utilities.NOTIFICATION_TYPES.DISMISSIBLE);        
+
+            })
+            .catch(error => {
+                window.console.log('error =====> ' + JSON.stringify(error));
+                let ts = this;
+                ts.showNotification(utilities.NOTIFICATION_HEADERS.ERROR, utilities.NOTIFICATIONS.EMAIL_MISSING, utilities.NOTIFICATION_TYPES.ERROR, utilities.NOTIFICATION_TYPES.DISMISSIBLE);        
+            })
+}
 
 }

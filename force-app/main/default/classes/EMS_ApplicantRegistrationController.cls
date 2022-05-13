@@ -8,9 +8,17 @@ public without sharing class EMS_ApplicantRegistrationController {
     
     @AuraEnabled
     public static void saveNewApplicant(EMS_Applicant_Credentials__c applicant){
-        applicant.Password__c = encryptPassword(applicant.Password__c);
-        applicant.One_Time_Passcode__c = generateRandomOtp();
-        insert applicant;
+        try{
+            applicant.Password__c = encryptPassword(applicant.Password__c);
+            applicant.One_Time_Passcode__c = generateRandomOtp();
+            insert applicant;
+        }
+        catch(Exception e){
+            if(e.getMessage().contains('DUPLICATE_VALUE')){
+                throw new AuraHandledException('Duplicate Email');
+            }
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 
     @AuraEnabled
@@ -57,7 +65,8 @@ public without sharing class EMS_ApplicantRegistrationController {
         }
     }
 
-    public static void resentOTP(Integer otp, String email){
+    @AuraEnabled
+    public static void resendOTP(Integer otp, String email){
         try{
             EMS_Applicant_Credentials__c applicant = [SELECT Id FROM EMS_Applicant_Credentials__c WHERE Email__c =: email LIMIT 1];
             applicant.One_Time_Passcode__c = generateRandomOtp();

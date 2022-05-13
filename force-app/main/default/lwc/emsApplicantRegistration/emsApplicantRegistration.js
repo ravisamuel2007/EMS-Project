@@ -24,6 +24,7 @@ export default class EmsApplicantRegistration extends NavigationMixin(LightningE
         })
         .catch(error => {
             console.log(error);
+             ts.showNotification('Error', error.body.message, 'error', 'dismissible');
         })
     }
 

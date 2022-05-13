@@ -52,6 +52,9 @@ export default class GenerateOtp extends LightningElement {
             }.bind(this), 1000);
         }
     }
+   
+
+
     sendOTP(code)
     {
         sendOTP({
